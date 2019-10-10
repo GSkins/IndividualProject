@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<div class="container-fluid" style="text-align: center">
+		<a style='color: blue; border: 4px solid powderblue; font-size: 200%; padding: 5px 20px' type="button" href="{{ url_for('my_bucket_list') }}">Go Back</a>
+
+		<div class="container-fluid" style="padding-top: 25px">
+			<div>
+				{% if post.author_of_list == current_user %}
+				<h3><u>{{ post.title }}</u></h3>
+				<p>{{ post.description }}</p>
+				<p>Due Date: {{ post.due_date }}</p>
+				<br>
+				<br>
+				
+					<div>
+						<a class="btn btn-secondary btn-md m-1" href="{{ url_for('update_item', post_id=post.id) }}">Update</a>
+						<button type="button" class="btn btn-danger btn-sm m-1">
+							<form action="{{ url_for('delete_item', post_id=post.id) }}" method="POST">
+								<input class="btn btn-danger btn-sm" type="submit" value="Delete item">
+							</form>
+						</button>
+					
+					</div>
+
+					
+
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock body_content %}

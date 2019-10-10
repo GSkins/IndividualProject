@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<div class="container-fluid" style="text-align: center">
+		<a style='color: blue; border: 4px solid powderblue; font-size: 200%; padding: 5px 20px' type="button" href="{{ url_for('communitypost') }}">New Post</a>
+	{% for post in posts %}
+		<div class="container-fluid" style="padding-top: 25px">
+			<div>
+				<img class="rounded-circle" src="{{ url_for('static', filename='ProfilePics/' + post.author.image_file) }}" width="40" height="40">
+				<h3><u><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></u></h3>
+				<span> - by <b>{{ post.author.username }}</b></span>
+				<span> On the <i>{{ post.date_posted.strftime('%d-%m-%Y, %H:%M') }}</i></span>
+				<br>
+				<p>{{ post.content }}</p>
+				<br>
+				<br>
+				<br>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock body_content %}

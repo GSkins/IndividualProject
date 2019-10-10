@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<div class="container-fluid" style="text-align: center">
+		<a style='color: blue; border: 4px solid powderblue; font-size: 200%; padding: 5px 20px' type="button" href="{{ url_for('communitypost') }}">Post</a>
+
+		<div class="container-fluid" style="padding-top: 25px">
+			<div>
+				<img class="rounded-circle" src="{{ url_for('static', filename='ProfilePics/' + post.author.image_file) }}" width="40" height="40">
+				<h3><u>{{ post.title }}</u></h3>
+				<p>{{ post.content }}</p>
+
+				<span> - by <b>{{ post.author.username }}</b></span>
+				<span> On the <i>{{ post.date_posted.strftime('%d-%m-%Y, %H:%M') }}</i></span>
+				<br>
+				<br>
+				{% if post.author == current_user %}
+					<div>
+						<a class="btn btn-secondary btn-sm m-1" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
+						<button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">
+							<form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+								<input class="btn btn-danger btn-sm" type="submit" value="Delete">
+							</form>
+						</button>
+					
+					</div>
+
+					
+
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock body_content %}
+

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body_content %}
+
+	
+	<div class="container-fluid" style="text-align: center;">
+		<a style='color: blue; border: 4px solid powderblue; font-size: 200%; padding: 5px 20px' type="button" href="{{ url_for('add_to_list') }}">Add item to Bucket List</a>
+		{% for post in posts %}
+		{% if post.author_of_list == current_user %}
+		<div class="container-fluid" style="text-align: left; padding-top: 25px">
+			<div>
+				<p><input type="checkbox"> Mark as done <a href="{{ url_for('list_item', post_id=post.id) }}"><h4><u>{{ post.title }}</h4></a></u>
+				{{ post.description }} - Due Date: {{ post.due_date }}</p>
+				<br>
+			</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+	
+
+{% endblock body_content %}

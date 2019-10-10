@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	{% if current_user.is_authenticated %}
+		<div class="container-fluid">
+			<div class="form">
+				<form method="POST" action="">
+					{{ form.hidden_tag() }}
+					<div class="form-group">
+						{{ form.title.label }}
+						{{ form.title }}
+						{% if form.title.errors %}
+							<div class="error">
+								{% for error in form.title.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% endif %}
+					</div>
+					<br>
+					<div class="form-group">
+						{{ form.description.label }}
+						{{ form.description }}
+						{% if form.description.errors %}
+							<div class="error">
+								{% for error in form.description.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% endif %}
+					</div>
+					<br>
+					<div class="form-group">
+						{{ form.due_date.label }} (YYYY-MM-DD)
+						{{ form.due_date }}
+						{% if form.due_date.errors %}
+							<div class="error">
+								{% for error in form.due_date.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% endif %}
+					</div>
+					<br>
+					<div class="form-group">
+						{{ form.submit }}
+					</div>
+				</form>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock body_content %}
