@@ -4,7 +4,7 @@ from application.models import Posts, Users, BucketList
 from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm, BucketListForm
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required
 import os
-from secrets import *
+import secrets
 from PIL import Image
 
 @app.route('/home')
@@ -95,24 +95,55 @@ def account():
 @app.route('/community', methods=['GET', 'POST'])
 def community():
 	postData = Posts.query.all()
-	return render_template('community.html', title='Community', posts=postData)
+	if current_user.is_authenticated:
+		image_file = url_for('static', filename='ProfilePics/' + current_user.image_file)
+	else:
+		image_file = url_for('static', filename='ProfilePics/' + 'test.jpg')
+	return render_template('community.html', title='Community', posts=postData, image_file=image_file)
+
+def save_post_picture(form_picture, location):
+	random_hex = secrets.token_hex(8)
+	_, f_ext = os.path.splitext(form_picture.filename)
+	picture_fn = random_hex + f_ext
+	if location == "community":
+		picture_path = os.path.join(app.root_path, 'static/CommunityPhotos', picture_fn)
+	elif location == "profile":
+		picture_path = os.path.join(app.root_path, 'static/ProfilePics', picture_fn)
+
+	output_size = (250, 250)
+	i = Image.open(form_picture)
+	i.thumbnail(output_size)
+	i.save(picture_path)
+
+	return picture_fn
+
 
 @app.route('/communitypost', methods=['GET','POST'])
 @login_required
 def communitypost():
 	form = PostForm()
 	if form.validate_on_submit():
-		postData = Posts(
-				title=form.title.data,
-				content=form.content.data,
-				author=current_user
-			)
+		if form.picture.data:
+			picture_file = save_post_picture(form.picture.data, "community")
+			postData = Posts(
+					title=form.title.data,
+					content=form.content.data,
+					image_file=picture_file,
+					author=current_user
+				)
+		else:
+			postData = Posts(
+						title=form.title.data,
+						content=form.content.data,
+						author=current_user
+					)
 		db.session.add(postData)
 		db.session.commit()
 		return redirect(url_for('community'))
 	else:
 		print(form.errors)
-	return render_template('communitypost.html', title='Post to Community', form=form, legend='Add Post')
+	image_file = url_for('static', filename='CommunityPhotos/' + current_user.image_file)
+	return render_template('communitypost.html', title='Post to Community', form=form, legend='Add Post', image_file=image_file)
 
 @app.route('/communitypost/<int:post_id>')
 def post(post_id):
@@ -153,6 +184,14 @@ def delete_post(post_id):
 def my_bucket_list():
 	BucketListData = BucketList.query.all()
 	return render_template('my_bucket_list.html', title='My Bucket List', posts=BucketListData)
+
+"""@app.route('/complete')
+def mark_as_complete():
+	if BucketList._is_done==0:
+		BucketList._is_done=1
+		db.session.commit()
+	return redirect(url_for('my_bucket_list'))"""
+
 
 @app.route('/add_to_my_bucket_list', methods=['GET','POST'])
 @login_required

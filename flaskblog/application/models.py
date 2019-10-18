@@ -7,7 +7,8 @@ class Posts(db.Model):
 	title = db.Column(db.String(200), nullable=False, unique=False)
 	content = db.Column(db.String(10000), nullable=False, unique=False)
 	date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-	
+	image_file = db.Column(db.String(60), nullable=False, default='blank.jpg')
+
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
 	def __repr__(self):

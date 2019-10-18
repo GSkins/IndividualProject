@@ -12,6 +12,9 @@
 				<br>
 				<p>{{ post.content }}</p>
 				<br>
+				<div class="media">
+					<img src="{{ url_for('static', filename='CommunityPhotos/' + post.image_file) }}" style="padding-left: 300px">
+				</div>
 				<br>
 				<br>
 			</div>

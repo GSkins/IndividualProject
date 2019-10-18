@@ -17,6 +17,10 @@ class PostForm(FlaskForm):
 			DataRequired(),
 			Length(min=4, max=10000)
 		])
+	picture = FileField('Add photo to post',
+		validators=[
+			FileAllowed(['jpg', 'png', 'jpeg'])
+		])
 	submit = SubmitField('Post Content')
 
 class RegistrationForm(FlaskForm):

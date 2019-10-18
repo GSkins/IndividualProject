@@ -7,11 +7,24 @@
 		{% for post in posts %}
 		{% if post.author_of_list == current_user %}
 		<div class="container-fluid" style="text-align: left; padding-top: 25px">
-			<div>
-				<p><input type="checkbox"> Mark as done <a href="{{ url_for('list_item', post_id=post.id) }}"><h4><u>{{ post.title }}</h4></a></u>
-				{{ post.description }} - Due Date: {{ post.due_date }}</p>
+			{% if post._is_done==0 %}
+			<div id="incomplete">
+				<h5><u><b>Incomplete Items: </b></u></h5>
+				<p><a href="{{ url_for('list_item', post_id=post.id) }}"><h4><u>{{ post.title }}</u></h4></a></p>
+				{{ post.description }} - Due Date: {{ post.due_date }}
+				<br>
+				
+			</div>
+			{% endif %}
+
+			{% if post._is_done==1 %}
+			<div id="complete">
+				<h5><u><b>Complete Items: </b></u></h5>
+				<p><a href="{{ url_for('list_item', post_id=post.id) }}"><h4><u>{{ post.title }}</h4></u></a>
+				{{ post.description }}</p>
 				<br>
 			</div>
+			{% endif %}
 		</div>
 		{% endif %}
 		{% endfor %}
