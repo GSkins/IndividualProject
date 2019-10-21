@@ -38,7 +38,6 @@ class BucketList(db.Model):
 	description = db.Column(db.String(200), nullable=False, unique=False)
 	created_on = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 	due_date = db.Column(db.String(11), nullable=False, default='Not set')
-	_is_deleted = db.Column(db.Boolean, nullable=False, default=False)
 	_is_done = db.Column(db.Boolean, nullable=False, default=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 

@@ -6,14 +6,14 @@
 		<div class="container-fluid" style="padding-top: 25px">
 			<div>
 				<img class="rounded-circle" src="{{ url_for('static', filename='ProfilePics/' + post.author.image_file) }}" width="40" height="40">
-				<h3><u><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></u></h3>
+				<h3><u><a href="{{ url_for('post', post_id=post.id) }}" style="color: white">{{ post.title }}</a></u></h3>
 				<span> - by <b>{{ post.author.username }}</b></span>
 				<span> On the <i>{{ post.date_posted.strftime('%d-%m-%Y, %H:%M') }}</i></span>
 				<br>
 				<p>{{ post.content }}</p>
 				<br>
 				<div class="media">
-					<img src="{{ url_for('static', filename='CommunityPhotos/' + post.image_file) }}" style="padding-left: 300px">
+					<img src="{{ url_for('static', filename='CommunityPhotos/' + post.image_file) }}" class="center">
 				</div>
 				<br>
 				<br>
