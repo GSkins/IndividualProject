@@ -5,7 +5,6 @@ sudo apt-get update
 sudo apt-get install python3-pip
 sudo apt-get install python3-venv
 
-#git clone https://github.com/GSkins/flaskblog
 cd ./Project/flaskblog/application
 sudo mv -f venv ~/venv
 python3 -m venv venv
@@ -24,6 +23,6 @@ pip install python-secrets
 pip3 install python-secrets
 pip install python2-secrets
 pip3 install pyopenssl
-#openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
-#export FLASK_ENV=production FLASK_RUN_HOST=0.0.0.0 FLASK_RUN_PORT=5000 FLASK_RUN_CERT=cert.pem FLASK_RUN_KEY=key.pem
-#flask run
+openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
+export FLASK_ENV=production FLASK_RUN_HOST=0.0.0.0 FLASK_RUN_PORT=5000 FLASK_RUN_CERT=cert.pem FLASK_RUN_KEY=key.pem
+flask run
