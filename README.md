@@ -15,8 +15,14 @@
 # Running the app on a local machine  
 
 >git clone hhtps://github.com/GSkins/IndividualProject  
-
-
+>python3 -m venv venv  
+>. venv/bin/activate  
+>export FLASK_APP=run.py  
+>export FLASK_ENV=development  
+>cd flaskblog/  
+>pip3 install pyopenssl  
+>openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365  
+>python3 run.py  
 
 # Execute shell for Jenkins
 
