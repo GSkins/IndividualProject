@@ -55,6 +55,6 @@
 >cd ./flaskblog  
 >sudo docker build -t flask-app .  
 >if sudo docker ps -a | grep flask-app;  
-	then sudo docker rm -f flask-app  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; then sudo docker rm -f flask-app  
 >fi  
 >sudo docker run -d -p 5000:5000 --name flask-app flask-app  
