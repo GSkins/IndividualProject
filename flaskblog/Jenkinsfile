@@ -10,7 +10,7 @@ pipeline{
                         steps{
                                 sh label: '', script: '''if [ "$(sudo docker ps -aq -f name=flask-app)" ];
                                         then sudo docker rm -f flask-app
-                                fi
+                                fi'''
                         }
                 }
                 stage('---Run_Container---'){
