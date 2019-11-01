@@ -27,9 +27,13 @@
 
 # Execute shell for Jenkins
 
+>#On the VM  
 >sudo apt-get update  
 >sudo apt-get install python3-pip -y  
 >sudo apt-get install python3-venv -y  
+>#Install Jenkins  
+>sudo visudo  
+>#add jenkins ALL=(ALL:ALL) NOPASSWD:ALL to the end  
 
 >#under source code management use git - https://github.com/GSkins/IndividualProject  
 
