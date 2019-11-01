@@ -3,7 +3,7 @@ pipeline{
         stages{
                 stage('---Build_Image---'){
                         steps{
-                                sh "sudo docker build -t flask-app ."
+                                sh "cd flaskblog/ | sudo docker build -t flask-app ."
                         }
                 }
                 stage('---clean---'){
