@@ -14,7 +14,7 @@
 
 # Running the app on a local machine  
 
->git clone hhtps://github.com/GSkins/IndividualProject  
+>git clone https://github.com/GSkins/IndividualProject  
 >python3 -m venv venv  
 >. venv/bin/activate  
 >export FLASK_APP=run.py  
