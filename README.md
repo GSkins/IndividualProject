@@ -1,7 +1,6 @@
 # Introduction
-#This is my bucket list website
-
-#I have been using ubuntu 16.04 LTS on a vm in gcp
+>This is my bucket list website
+>I have been using ubuntu 16.04 LTS on a vm in gcp
 
 
 # Pre Requisites
