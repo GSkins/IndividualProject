@@ -20,6 +20,7 @@
 >export FLASK_APP=run.py  
 >export FLASK_ENV=development  
 >cd flaskblog/  
+>pip3 install -r requirements.txt  
 >pip3 install pyopenssl  
 >openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365  
 >python3 run.py  
