@@ -4,21 +4,21 @@ sudo apt-get update -y
 sudo apt-get install python3-pip -y
 sudo apt-get install python3-venv -y
 
-# move to module folder
+#move to module folder
 cd ./flaskblog
 # install the service script
 sudo cp flask-app.service /etc/systemd/system/
-# reload the service scripts
+#reload the service scripts
 sudo systemctl daemon-reload
-# stop the old service
+#stop the old service
 sudo systemctl stop flask-app
-# install the application files
+#install the application files
 install_dir=/opt/flask-app
 sudo rm -rf ${install_dir}
 sudo mkdir ${install_dir}
 sudo cp -r ./* ${install_dir}
 sudo chown -R pythonadm:pythonadm ${install_dir}
-# configure python virtual environment and install dependencies
+#configure python virtual environment and install dependencies
 sudo su - pythonadm << EOF
 cd ${install_dir}
 virtualenv -p python3 venv
