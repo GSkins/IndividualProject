@@ -1,12 +1,33 @@
-# Execute shell for Jenkins
+# Introduction
+#This is my bucket list website
+#I have been using ubuntu 16.04 LTS on a vm in gcp
 
-sudo apt-get update -y
+
+# Pre Requisites
+
+sudo apt-get update
+#check you have python3 installed
 sudo apt-get install python3-pip -y
 sudo apt-get install python3-venv -y
 
+
+# Running the app on a local machine
+
+git clone hhtps://github.com/GSkins/IndividualProject
+
+
+
+# Execute shell for Jenkins
+
+sudo apt-get update
+sudo apt-get install python3-pip -y
+sudo apt-get install python3-venv -y
+
+#under source code management use git - https://github.com/GSkins/IndividualProject
+
 #move to module folder
 cd ./flaskblog
-# install the service script
+#install the service script
 sudo cp flask-app.service /etc/systemd/system/
 #reload the service scripts
 sudo systemctl daemon-reload
@@ -26,6 +47,7 @@ source venv/bin/activate
 pip3 install virtualenv
 pip3 install -r requirements.txt
 EOF
+
 
 # Execute shell for Docker
 
