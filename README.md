@@ -33,6 +33,9 @@
 
 >#under source code management use git - https://github.com/GSkins/IndividualProject  
 
+>if [ ! "$(cat /etc/passwd | grep pythonadm)" ];  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; then sudo useradd -m -s /bin/bash pythonadm  
+>fi  
 >#move to module folder  
 >cd ./flaskblog  
 >#install the service script  
