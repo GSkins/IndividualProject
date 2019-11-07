@@ -23,7 +23,7 @@ class Users(db.Model, UserMixin):
 	email = db.Column(db.String(150), nullable=False, unique=True)
 	username = db.Column(db.String(50), nullable=False, unique=True)
 	image_file = db.Column(db.String(60), nullable=False, default='test.jpg')
-	password = db.Column(db.String(50), nullable=False)
+	password = db.Column(db.String(128), nullable=False)
 	posts = db.relationship('Posts', backref='author', lazy=True)
 	bucket_list = db.relationship('BucketList', backref='author_of_list', lazy=True)
 
