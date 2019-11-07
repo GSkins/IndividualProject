@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  app:
+    image: app
+    build: .
+    ports:
+      - target: 5000
+        published: 80
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=flask_database
+  jenkins:
+    image: jenkins/jenkins:latest
+    ports:
+      - target: 8080
+        published: 8080
