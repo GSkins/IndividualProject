@@ -9,7 +9,7 @@ POST_PHOTO_FOLDER = os.path.join('static', 'CommunityPhotos')
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@localhost/flask_database'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@mysql:3306/flask_database'
 app.config['SECRET_KEY'] = 'secretkeyexample'
 app.config['UPLOAD_FOLDER'] = POST_PHOTO_FOLDER
 
